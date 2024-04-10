@@ -9,7 +9,8 @@ import (
 
 func GetVulnerability(ctx *fiber.Ctx) error {
 	var results Results
-	results, err := trivy()
+	image := ctx.Query("image")
+	results, err := trivy(image)
 	if err != nil {
 		fmt.Printf("Error parsing JSON output: %s\n", err)
 		return errors.New("error parsing json output")

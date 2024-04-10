@@ -7,14 +7,14 @@ import (
 	"os/exec"
 )
 
-func trivy() (Results, error) {
+func trivy(image string) (Results, error) {
 	// Replace "alpine:3.10" with the image you want to scan
 	// imageName := "quixcontainerregistry.azurecr.io/git-api:latest"
-	imageName := "alpine"
+	// imageName := "alpine"
 	var reports Results
 
 	// Construct the Trivy command
-	cmd := exec.Command("trivy", "image", "--format", "json", imageName)
+	cmd := exec.Command("trivy", "image", "--format", "json", image)
 
 	// Execute the Trivy command
 	output, err := cmd.Output()
